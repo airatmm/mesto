@@ -1,0 +1,10 @@
+.profile__info {
+    max-width: 45%;
+    display: grid;
+    grid-template-columns: max-content min-content;
+    grid-template-rows: repeat(2, min-content);
+    grid-column-gap: 18px;
+    grid-row-gap: 16px;
+    align-items: end;
+    line-height: 1.14;
+}

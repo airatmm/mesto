@@ -7,5 +7,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
-    transition: .335s ease-in-out;
+    transition: opacity .6s ease;
+}
+
+.card__like:hover {
+    opacity: .5;
 }

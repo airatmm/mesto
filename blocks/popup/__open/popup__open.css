@@ -2,5 +2,5 @@
     display: flex;
     visibility: visible;
     opacity: 1;
-    transition: visibility 0s, opacity .7s ease-out;
+    transition: visibility 0s, opacity .5s ease-out;
 }

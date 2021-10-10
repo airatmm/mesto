@@ -6,3 +6,15 @@
     margin: 0;
     padding: 0;
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .cards__list {
+        grid-template-columns: repeat(2, minmax(282px, 1fr));
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards__list {
+        grid-template-columns: minmax(282px, 1fr);
+    }
+}

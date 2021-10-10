@@ -4,7 +4,7 @@
 
 ## Ссылка на проект
 
-[Mesto](hhttps://airatmm.github.io/mesto)
+[Mesto](https://airatmm.github.io/mesto)
 
 ### Функциональность
 Третья проектная работа на курсе Яндекс.Практикума.

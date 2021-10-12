@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 768px) {
     .profile__info {
-        margin: 26px 28px 36px 34px;
+        margin: 25px 25px 33px 51px;
         grid-column-gap: 10px;
         grid-row-gap: 6px;
     }

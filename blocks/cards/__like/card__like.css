@@ -1,10 +1,10 @@
 .cards__like {
-    width: 21px;
-    height: 18px;
+    width: 22px;
+    height: 19px;
     background-color: #fff;
     background-image: url(../../../images/like.svg);
     border: none;
-    background-size: contain;
+    background-size: 100%;
     background-repeat: no-repeat;
     cursor: pointer;
     transition: opacity .6s ease;

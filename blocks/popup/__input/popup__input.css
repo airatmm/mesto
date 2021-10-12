@@ -2,7 +2,21 @@
     border: none;
     color: #000000;
     font-size: 14px;
+    font-weight: 400;
     line-height: 17px;
-    margin: 0 0 13px;
     outline: none;
+    position: relative;
+    min-width: 358px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.popup__input:first-child {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__input {
+        min-width: 100%;
+    }
 }

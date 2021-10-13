@@ -7,7 +7,7 @@
     outline: none;
     position: relative;
     min-width: 358px;
-    padding-bottom: 13px;
+    padding: 0 0 13px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 

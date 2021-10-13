@@ -2,13 +2,13 @@
     background: url("../../../images/close.svg");
     width: 32px;
     height: 32px;
-    border: none;
     position: absolute;
     top: -35px;
     right: -35px;
+    border: none;
+    background-size: cover;
     cursor: pointer;
     background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .popup__close:hover {
@@ -19,7 +19,7 @@
     .popup__close {
         width: 20px;
         height: 20px;
-        top: -30px;
+        top: -27px;
         right: 0;
         padding: 0;
     }

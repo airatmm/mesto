@@ -39,12 +39,12 @@ const initialCards = [
     }
 ];
 
-const cardsList = document.querySelector('.cards__list');
-const template = document.querySelector('.template').content;
+const cardsList = document.querySelector('.cards__list'); // находим ul-ку
+const template = document.querySelector('.template').content; // Берем содержимое темплейта
 
-initialCards.forEach(addCards);
+initialCards.forEach(addappendCards); // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 
-function createCards(item) {
+function createCards(item) { // Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
     const cardsItem = template.querySelector('.cards__item').cloneNode(true);
     cardsItem.querySelector('.cards__caption').textContent = item.name;
     cardsItem.querySelector('.cards__images').src = item.link;
@@ -53,28 +53,28 @@ function createCards(item) {
     return cardsItem;
 }
 
-function addCards(item) {
+function addappendCards(item) { // Функция встраивания карточек при загрузке страницы (возможно нужно назвать её что то вроде renderAddCards / appendCards - встраиваем в начало списка, а если нужно будет в конец?) 
     const cardsItem = createCards(item);
-    cardsList.append(cardsItem);
+    cardsList.append(cardsItem); //встраиваем вначало списка
 }
 
 
 
-//обработчик открытия попапа
+//функция открытия попапа
 function openPopup() {
     popup.classList.add('popup_opened');
     titleField.value = titleProfile.textContent;
     discriptionField.value = discriptionText.textContent;
 }
 
-//обработчик закрытия попапа
+//функция закрытия попапа
 function closePopup() {
     popup.classList.remove('popup_opened');
 }
 
 
 function submitForm(event) {
-    event.preventDefault();
+    event.preventDefault(); // для того что бы страница не перезагружалась
 
     titleProfile.textContent = titleField.value;
     discriptionText.textContent = discriptionField.value;

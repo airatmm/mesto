@@ -53,7 +53,7 @@ function createCards(item) { // Функция создания карточки
     return cardsItem;
 }
 
-function addappendCards(item) { // Функция встраивания карточек при загрузке страницы (возможно нужно назвать её что то вроде renderAddCards / appendCards - встраиваем в начало списка, а если нужно будет в конец?) 
+function addappendCards(item) { // Функция встраивания карточек при загрузке страницы (встраивается вначало)
     const cardsItem = createCards(item);
     cardsList.append(cardsItem); //встраиваем вначало списка
 }

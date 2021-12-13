@@ -39,11 +39,24 @@ const initialCards = [
     }
 ];
 
+const cardsList = document.querySelector('.cards__list');
+const template = document.querySelector('.template').content;
 
+initialCards.forEach(addCards);
 
+function createCards(item) {
+    const cardsItem = template.querySelector('.cards__item').cloneNode(true);
+    cardsItem.querySelector('.cards__caption').textContent = item.name;
+    cardsItem.querySelector('.cards__images').src = item.link;
+    cardsItem.querySelector('.cards__images').alt = item.name;
 
+    return cardsItem;
+}
 
-
+function addCards(item) {
+    const cardsItem = createCards(item);
+    cardsList.append(cardsItem);
+}
 
 
 

@@ -1,5 +1,7 @@
-const popup = document.querySelector('.popup'); //возвращаем элемент popup (div popup)
-const popupClose = document.querySelector('.popup__close'); //возвращаем элемент popup__close (кнопка закрытия попапа) (div popup)
+/* для попапа редактирования профиля*/
+const popupEdit = document.querySelector('.popup_type_edit'); //возвращаем попап редактирования профиля (popup_type_edit) 
+const popupCloseEdit = document.querySelector('.popup__close_edit'); //возвращаем элемент popup__close_edit (кнопка закрытия попапа редактирования)
+console.log(popupCloseEdit);
 const editButton = document.querySelector('.profile__button_action_edit'); //возвращаем элемент profile__button_action_edit (копка редактирования профиля) из секции profile
 
 const formButton = document.querySelector('.popup__button'); //возвращаем элемент popup__button (кнопка сохраниения) (div popup)
@@ -10,6 +12,15 @@ const titleField = document.querySelector('.popup__input_type_title'); //воз�
 
 const discriptionField = document.querySelector('.popup__input_type_discription'); //возвращаем элемент popup__input_type_discription (div popup) (описание профиля (о себе) в попапе)
 const discriptionText = document.querySelector('.profile__discription'); //возвращаем элемент profile__discription из секции profile (описание профиля (о себе))
+
+/* для попапа добавления карточек*/
+const addCardButton = document.querySelector('profile__button_action_add'); //кнопка добавления карточки(+)
+const popupAddCard = document.querySelector('popup_type_card'); // попап добавления карточки
+const inputCardName = document.querySelector('popup__input_card_name'); // инпут названия   
+const inputCardUrl = document.querySelector('popup__input_card_url'); // инпут ссылки / изображения
+const closeCardButton = document.querySelector('popup__close_card'); //кнопка закрытия попапа добавления карточки
+const addCardForm = document.querySelector('popup__form_card');
+const addCardSaveButton = document.querySelector('popup__button_card_save'); //кнопка создать новую карточку
 
 // массив карточек
 const initialCards = [
@@ -42,7 +53,7 @@ const initialCards = [
 const cardsList = document.querySelector('.cards__list'); // находим ul-ку
 const template = document.querySelector('.template').content; // Берем содержимое темплейта
 
-initialCards.forEach(addappendCards); // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
+initialCards.forEach(addAppendCards); // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 
 function createCards(item) { // Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
     const cardsItem = template.querySelector('.cards__item').cloneNode(true);
@@ -53,23 +64,36 @@ function createCards(item) { // Функция создания карточки
     return cardsItem;
 }
 
-function addappendCards(item) { // Функция встраивания карточек при загрузке страницы (встраивается вначало)
+function addAppendCards(item) { // Функция встраивания карточек при загрузке страницы (встраивается вначало)
     const cardsItem = createCards(item);
     cardsList.append(cardsItem); //встраиваем вначало списка
 }
 
-
-
-//функция открытия попапа
-function openPopup() {
+//функция для открытия попапов
+function openPopup(popup) {
     popup.classList.add('popup_opened');
-    titleField.value = titleProfile.textContent;
-    discriptionField.value = discriptionText.textContent;
 }
 
-//функция закрытия попапа
-function closePopup() {
+//функция для закрытия попапов
+function closePopup(popup) {
     popup.classList.remove('popup_opened');
+}
+
+//функция открытия попапа редактирования
+function openPopupEdit() {
+    openPopup(popupEdit);
+    titleField.value = titleProfile.textContent;
+    discriptionField.value = discriptionText.textContent;
+
+}
+//функция открытия попапа добавления карточки
+function openPopupAdd() {
+    openPopup(popupAddCard);
+}
+
+//функция закрытия попапа редактирования
+function closePopupEdit() {
+    closePopup(popupEdit);
 }
 
 
@@ -79,10 +103,10 @@ function submitForm(event) {
     titleProfile.textContent = titleField.value;
     discriptionText.textContent = discriptionField.value;
 
-    closePopup();
+    closePopup(popupEdit);
 }
 
-editButton.addEventListener('click', openPopup);
-popupClose.addEventListener('click', closePopup);
+editButton.addEventListener('click', openPopupEdit);
+popupCloseEdit.addEventListener('click', closePopupEdit);
 
 form.addEventListener('submit', submitForm);

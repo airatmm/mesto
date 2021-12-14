@@ -2,7 +2,6 @@
 const popupEdit = document.querySelector('.popup_type_edit'); //возвращаем попап редактирования профиля (popup_type_edit) 
 const popupCloseEdit = document.querySelector('.popup__close_edit'); //возвращаем элемент popup__close_edit (кнопка закрытия попапа редактирования)
 const editButton = document.querySelector('.profile__button_action_edit'); //возвращаем элемент profile__button_action_edit (копка редактирования профиля) из секции profile
-console.log(editButton);
 const formEditSaveButton = document.querySelector('.popup__button_edit_save'); //возвращаем элемент popup__button_edit_save (кнопка сохраниения)
 const formEdit = document.querySelector('.popup__form_edit'); //возвращаем элемент popup__form_edit (форма попапа. имя / о себе) (div popup)
 
@@ -13,16 +12,15 @@ const discriptionField = document.querySelector('.popup__input_type_discription'
 const discriptionText = document.querySelector('.profile__discription'); //возвращаем элемент profile__discription из секции profile (описание профиля (о себе))
 
 /* для попапа добавления карточек*/
-const popupAddCard = document.querySelector('popup_type_card'); // попап добавления карточки
-const closeCardButton = document.querySelector('popup__close_card'); //кнопка закрытия попапа добавления карточки
-const addCardButton = document.querySelector('profile__button_action_add'); //кнопка добавления карточки(+)
-console.log(addCardButton);
+const popupAddCard = document.querySelector('.popup_type_card'); // попап добавления карточки
+const closeCardButton = document.querySelector('.popup__close_card'); //кнопка закрытия попапа добавления карточки
+const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
+const addCardSaveButton = document.querySelector('.popup__button_card_save'); //кнопка создать новую карточку
 
-const inputCardName = document.querySelector('popup__input_card_name'); // инпут названия   
-const inputCardUrl = document.querySelector('popup__input_card_url'); // инпут ссылки / изображения
+const addCardForm = document.querySelector('.popup__form_card');
 
-const addCardForm = document.querySelector('popup__form_card');
-const addCardSaveButton = document.querySelector('popup__button_card_save'); //кнопка создать новую карточку
+const inputCardName = document.querySelector('.popup__input_card_name'); // инпут названия   
+const inputCardUrl = document.querySelector('.popup__input_card_url'); // инпут ссылки / изображения
 
 // массив карточек
 const initialCards = [
@@ -88,15 +86,21 @@ function openPopupEdit() {
     discriptionField.value = discriptionText.textContent;
 
 }
+//функция закрытия попапа редактирования
+function closePopupEdit() {
+    closePopup(popupEdit);
+}
+
 //функция открытия попапа добавления карточки
 function openPopupAdd() {
     openPopup(popupAddCard);
 }
 
-//функция закрытия попапа редактирования
-function closePopupEdit() {
-    closePopup(popupEdit);
+//функция закрытия попапа добавления карточки
+function closePopupAdd() {
+    closePopup(popupAddCard);
 }
+
 
 
 function submitForm(event) {
@@ -108,7 +112,10 @@ function submitForm(event) {
     closePopup(popupEdit);
 }
 
-editButton.addEventListener('click', openPopupEdit);
-popupCloseEdit.addEventListener('click', closePopupEdit);
+editButton.addEventListener('click', openPopupEdit); // открытие попапа редактирования по клику
+popupCloseEdit.addEventListener('click', closePopupEdit); // закрытие попапа редактирования по клику на крестик
+
+addCardButton.addEventListener('click', openPopupAdd); // открытиее попапа добавления карточки по клику
+closeCardButton.addEventListener('click', closePopupAdd); // открытиее попапа добавления карточки по клику
 
 formEdit.addEventListener('submit', submitForm);

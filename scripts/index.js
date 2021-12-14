@@ -17,10 +17,14 @@ const closeCardButton = document.querySelector('.popup__close_card'); //кноп
 const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
 const addCardSaveButton = document.querySelector('.popup__button_card_save'); //кнопка создать новую карточку
 
+const cardTitle = document.querySelector('.popup__input_card_name');
+const cardUrl = document.querySelector('.popup__input_card_url');
+
 const addCardForm = document.querySelector('.popup__form_card');
 
 const inputCardName = document.querySelector('.popup__input_card_name'); // инпут названия   
 const inputCardUrl = document.querySelector('.popup__input_card_url'); // инпут ссылки / изображения
+
 
 // массив карточек
 const initialCards = [
@@ -94,6 +98,8 @@ function closePopupEdit() {
 //функция открытия попапа добавления карточки
 function openPopupAdd() {
     openPopup(popupAddCard);
+    cardTitle.value = '';
+    cardUrl.value = '';
 }
 
 //функция закрытия попапа добавления карточки
@@ -101,9 +107,8 @@ function closePopupAdd() {
     closePopup(popupAddCard);
 }
 
-
-
-function submitForm(event) {
+/* Отправка формы редактиоования профиля*/
+function submitEditForm(event) {
     event.preventDefault(); // для того что бы страница не перезагружалась
 
     titleProfile.textContent = titleField.value;
@@ -112,10 +117,20 @@ function submitForm(event) {
     closePopup(popupEdit);
 }
 
+function CardFormSubmit(event) { //добавление карточки вначало списка, кнопка создать
+    event.preventDefault();
+    cardsList.prepend(
+        createCards({ name: cardTitle.value, link: cardUrl.value })
+    );
+    closePopupAdd();
+}
+
+
 editButton.addEventListener('click', openPopupEdit); // открытие попапа редактирования по клику
 popupCloseEdit.addEventListener('click', closePopupEdit); // закрытие попапа редактирования по клику на крестик
 
 addCardButton.addEventListener('click', openPopupAdd); // открытиее попапа добавления карточки по клику
 closeCardButton.addEventListener('click', closePopupAdd); // открытиее попапа добавления карточки по клику
 
-formEdit.addEventListener('submit', submitForm);
+formEdit.addEventListener('submit', submitEditForm); // отправка формы по событию 
+addCardForm.addEventListener('submit', CardFormSubmit) // отправка формы создать карточку

@@ -97,6 +97,7 @@ function createCards(item) {
         openPopup(popupPhoto);
         photoUrl.src = item.link;
         photoTitle.textContent = item.name;
+        popup.classList.add('popup__dark');
 
     }
 

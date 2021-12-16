@@ -17,13 +17,11 @@ const closeCardButton = document.querySelector('.popup__close_card'); //кноп
 const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
 const addCardSaveButton = document.querySelector('.popup__button_card_save'); //кнопка создать новую карточку
 
-const cardTitle = document.querySelector('.popup__input_card_name');
-const cardUrl = document.querySelector('.popup__input_card_url');
+const cardTitle = document.querySelector('.popup__input_card_name'); // инпут названия  
+const cardUrl = document.querySelector('.popup__input_card_url'); // // инпут ссылки / изображения
 
 const addCardForm = document.querySelector('.popup__form_card');
 
-const inputCardName = document.querySelector('.popup__input_card_name'); // инпут названия   
-const inputCardUrl = document.querySelector('.popup__input_card_url'); // инпут ссылки / изображения
 
 
 // массив карточек
@@ -55,22 +53,45 @@ const initialCards = [
 ];
 
 const cardsList = document.querySelector('.cards__list'); // находим ul-ку
-const template = document.querySelector('.template').content; // Берем содержимое темплейта
+const template = document.querySelector('.template').content; // Берем всё содержимое темплейта
 
-initialCards.forEach(addAppendCards); // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 
-function createCards(item) { // Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
+// Перебираем массив и при каждой итерации добавляем(рендерим) карточки
+initialCards.forEach(addAppendCards);
+
+// Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
+function createCards(item) {
     const cardsItem = template.querySelector('.cards__item').cloneNode(true);
     cardsItem.querySelector('.cards__caption').textContent = item.name;
     cardsItem.querySelector('.cards__images').src = item.link;
     cardsItem.querySelector('.cards__images').alt = item.name;
 
+    const likeButton = cardsItem.querySelector('.cards__like'); // кнопка лайка
+
+    const deleteButton = cardsItem.querySelector('.cards__delete'); //кнопка удалить
+
+    // функция лайка
+    function likeCards(event) {
+        event.target.classList.toggle('cards__like_active');
+    };
+
+    // функция удаления карточки
+    function deleteCards() {
+        deleteButton.closest('.cards__item').remove(); // closest - возвращает ближайший родительский элемент с переданным селектором и remove срабатывает на весь элемент списка
+    };
+
+
+    likeButton.addEventListener('click', likeCards); // лайк по клику
+    deleteButton.addEventListener('click', deleteCards); // удаление по клику
+
+
     return cardsItem;
 }
 
-function addAppendCards(item) { // Функция встраивания карточек при загрузке страницы (встраивается вначало)
+// Функция встраивания карточек при загрузке страницы (встраивается в конец)
+function addAppendCards(item) {
     const cardsItem = createCards(item);
-    cardsList.append(cardsItem); //встраиваем вначало списка
+    cardsList.append(cardsItem); //встраиваем в конец списка
 }
 
 //функция для открытия попапов
@@ -126,11 +147,14 @@ function CardFormSubmit(event) { //добавление карточки вна�
 }
 
 
+
+
+
 editButton.addEventListener('click', openPopupEdit); // открытие попапа редактирования по клику
 popupCloseEdit.addEventListener('click', closePopupEdit); // закрытие попапа редактирования по клику на крестик
 
 addCardButton.addEventListener('click', openPopupAdd); // открытиее попапа добавления карточки по клику
-closeCardButton.addEventListener('click', closePopupAdd); // открытиее попапа добавления карточки по клику
+closeCardButton.addEventListener('click', closePopupAdd); // закрытие попапа добавления карточки по клику
 
 formEdit.addEventListener('submit', submitEditForm); // отправка формы по событию 
 addCardForm.addEventListener('submit', CardFormSubmit) // отправка формы создать карточку

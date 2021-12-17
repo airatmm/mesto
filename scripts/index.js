@@ -30,24 +30,24 @@ const closePhoto = document.querySelector('.popup__close_photo');
 // массив карточек
 const initialCards = [
     {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        name: 'Retro Car',
+        link: 'https://images.unsplash.com/photo-1639676376439-006c382867b6'
     },
     {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Телескоп',
+        link: 'https://images.unsplash.com/photo-1639731458504-2a37ec687965'
     },
     {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+        name: 'Лондон',
+        link: 'https://images.unsplash.com/photo-1639734174831-bf2d5b7d483c'
     },
     {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+        name: 'Печеньки',
+        link: 'https://images.unsplash.com/photo-1639678114429-a915fdb55000'
     },
     {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+        name: 'Рождество',
+        link: 'https://images.unsplash.com/photo-1639610806386-661d00972b55'
     },
     {
         name: 'Байкал',

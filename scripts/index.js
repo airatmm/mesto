@@ -20,12 +20,12 @@ const addCardSaveButton = document.querySelector('.popup__button_card_save'); //
 const cardTitle = document.querySelector('.popup__input_card_name'); // инпут названия  
 const cardUrl = document.querySelector('.popup__input_card_url'); // // инпут ссылки / изображения
 
-const addCardForm = document.querySelector('.popup__form_card');
+const addCardForm = document.querySelector('.popup__form_card'); //форма добавления карточки
 
-const photoUrl = document.querySelector('.popup__photo-image');
-const photoTitle = document.querySelector('.popup__photo-title');
+const photoUrl = document.querySelector('.popup__photo-image'); // ссылка на изображение/фото
+const photoTitle = document.querySelector('.popup__photo-title'); // заголовок карточки при открытии изображения
 
-const closePhoto = document.querySelector('.popup__close_photo');
+const closePhoto = document.querySelector('.popup__close_photo'); // закртытие попапа изображения/фото
 
 // массив карточек
 const initialCards = [
@@ -58,10 +58,8 @@ const initialCards = [
 const cardsList = document.querySelector('.cards__list'); // находим ul-ку
 const template = document.querySelector('.template').content; // Берем всё содержимое темплейта
 
-
-const popupPhoto = document.querySelector('.popup_type_foto');
-const closeButtonPhoto = popupPhoto.querySelector('.popup__close_button');
-
+const popupPhoto = document.querySelector('.popup_type_foto'); // попап фотографий 
+const closeButtonPhoto = popupPhoto.querySelector('.popup__close_button'); // кнопка закрытия попапа фотографий
 
 // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 initialCards.forEach(addAppendCards);
@@ -77,7 +75,7 @@ function createCards(item) {
 
     const deleteButton = cardsItem.querySelector('.cards__delete'); //кнопка удалить
 
-
+    const photo = cardsItem.querySelector('.cards__images'); // изображение/фото
 
     // функция лайка
     function likeCards(event) {
@@ -89,10 +87,10 @@ function createCards(item) {
         deleteButton.closest('.cards__item').remove(); // closest - возвращает ближайший родительский элемент с переданным селектором и remove срабатывает на весь элемент списка
     };
 
-
     likeButton.addEventListener('click', likeCards); // лайк по клику
     deleteButton.addEventListener('click', deleteCards); // удаление по клику
 
+    // открываем фотографию, подтягиваем фотографию(урл), заголовок, добавляем класс popup__dark для затемнение оверлея
     function openPhoto() {
         openPopup(popupPhoto);
         photoUrl.src = item.link;
@@ -101,12 +99,7 @@ function createCards(item) {
 
     }
 
-    const photo = cardsItem.querySelector('.cards__images');
-
-    photo.addEventListener('click', openPhoto);
-
-
-
+    photo.addEventListener('click', openPhoto); // открытие попапа фотографий по клику
 
     return cardsItem;
 }
@@ -153,14 +146,6 @@ function closePopupAdd() {
     closePopup(popupAddCard);
 }
 
-////////////////////////////////////////////////////////
-
-
-
-
-
-//////////////////////////////////
-
 /* Отправка формы редактиоования профиля*/
 function submitEditForm(event) {
     event.preventDefault(); // для того что бы страница не перезагружалась
@@ -192,4 +177,4 @@ closeCardButton.addEventListener('click', closePopupAdd); // закрытие п
 formEdit.addEventListener('submit', submitEditForm); // отправка формы по событию 
 addCardForm.addEventListener('submit', CardFormSubmit) // отправка формы создать карточку
 
-closeButtonPhoto.addEventListener('click', closePopupPhoto);
+closeButtonPhoto.addEventListener('click', closePopupPhoto); // закрытие попапа фотографий

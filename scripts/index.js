@@ -31,23 +31,23 @@ const closePhoto = document.querySelector('.popup__close_photo'); // закрт�
 const initialCards = [
     {
         name: 'Retro Car',
-        link: 'https://images.unsplash.com/photo-1639676376439-006c382867b6'
+        link: 'https://cdn.pixabay.com/photo/2015/05/28/23/12/auto-788747_960_720.jpg'
     },
     {
         name: 'Телескоп',
-        link: 'https://images.unsplash.com/photo-1639731458504-2a37ec687965'
+        link: 'https://cdn.pixabay.com/photo/2017/03/08/20/12/viewing-machine-2127704_960_720.jpg'
     },
     {
         name: 'Лондон',
-        link: 'https://images.unsplash.com/photo-1639734174831-bf2d5b7d483c'
+        link: 'https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_960_720.jpg'
     },
     {
         name: 'Печеньки',
-        link: 'https://images.unsplash.com/photo-1639678114429-a915fdb55000'
+        link: 'https://cdn.pixabay.com/photo/2019/06/01/21/02/cookie-4245030_960_720.jpg'
     },
     {
         name: 'Рождество',
-        link: 'https://images.unsplash.com/photo-1639610806386-661d00972b55'
+        link: 'https://cdn.pixabay.com/photo/2015/02/25/07/39/church-648430_960_720.jpg'
     },
     {
         name: 'Байкал',
@@ -62,20 +62,21 @@ const popupPhoto = document.querySelector('.popup_type_foto'); // попап ф�
 const closeButtonPhoto = popupPhoto.querySelector('.popup__close_button'); // кнопка закрытия попапа фотографий
 
 // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
-initialCards.forEach(addAppendCards);
+initialCards.forEach(appendCards);
 
 // Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
 function createCards(item) {
     const cardsItem = template.querySelector('.cards__item').cloneNode(true);
+    const photo = cardsItem.querySelector('.cards__images'); // изображение/фото
     cardsItem.querySelector('.cards__caption').textContent = item.name;
-    cardsItem.querySelector('.cards__images').src = item.link;
-    cardsItem.querySelector('.cards__images').alt = item.name;
+    photo.src = item.link;
+    photo.alt = item.name;
 
     const likeButton = cardsItem.querySelector('.cards__like'); // кнопка лайка
 
     const deleteButton = cardsItem.querySelector('.cards__delete'); //кнопка удалить
 
-    const photo = cardsItem.querySelector('.cards__images'); // изображение/фото
+
 
     // функция лайка
     function likeCards(event) {
@@ -94,9 +95,8 @@ function createCards(item) {
     function openPhoto() {
         openPopup(popupPhoto);
         photoUrl.src = item.link;
+        photoUrl.alt = item.name;
         photoTitle.textContent = item.name;
-        popup.classList.add('popup__dark');
-
     }
 
     photo.addEventListener('click', openPhoto); // открытие попапа фотографий по клику
@@ -107,7 +107,7 @@ function createCards(item) {
 
 
 // Функция встраивания карточек при загрузке страницы (встраивается в конец)
-function addAppendCards(item) {
+function appendCards(item) {
     const cardsItem = createCards(item);
     cardsList.append(cardsItem); //встраиваем в конец списка
 }
@@ -137,8 +137,6 @@ function closePopupEdit() {
 //функция открытия попапа добавления карточки
 function openPopupAdd() {
     openPopup(popupAddCard);
-    cardTitle.value = '';
-    cardUrl.value = '';
 }
 
 //функция закрытия попапа добавления карточки
@@ -146,7 +144,7 @@ function closePopupAdd() {
     closePopup(popupAddCard);
 }
 
-/* Отправка формы редактиоования профиля*/
+/* Отправка формы редактирования профиля*/
 function submitEditForm(event) {
     event.preventDefault(); // для того что бы страница не перезагружалась
 
@@ -156,11 +154,13 @@ function submitEditForm(event) {
     closePopup(popupEdit);
 }
 
-function CardFormSubmit(event) { //добавление карточки вначало списка, кнопка создать
+function hanldeCardFormSubmit(event) { //добавление карточки вначало списка, кнопка создать
     event.preventDefault();
     cardsList.prepend(
         createCards({ name: cardTitle.value, link: cardUrl.value })
     );
+    cardTitle.value = '';
+    cardUrl.value = '';
     closePopupAdd();
 }
 
@@ -175,6 +175,6 @@ addCardButton.addEventListener('click', openPopupAdd); // открытиее п�
 closeCardButton.addEventListener('click', closePopupAdd); // закрытие попапа добавления карточки по клику
 
 formEdit.addEventListener('submit', submitEditForm); // отправка формы по событию 
-addCardForm.addEventListener('submit', CardFormSubmit) // отправка формы создать карточку
+addCardForm.addEventListener('submit', hanldeCardFormSubmit) // отправка формы создать карточку
 
 closeButtonPhoto.addEventListener('click', closePopupPhoto); // закрытие попапа фотографий

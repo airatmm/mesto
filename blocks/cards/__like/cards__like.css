@@ -4,7 +4,7 @@
     background-color: #fff;
     background: url(../../../images/like.svg) center no-repeat;
     border: none;
-    background-size: 100%;
+    background-size: cover;
     cursor: pointer;
     transition: opacity .6s ease;
 }

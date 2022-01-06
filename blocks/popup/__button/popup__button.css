@@ -31,3 +31,14 @@
         margin-top: 45px;
     }
 }
+
+
+.button_inactive {
+    color: #B8B8B8;
+    background: #EDEDED;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

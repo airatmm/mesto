@@ -6,7 +6,11 @@
     background: #FFFFFF;
     position: relative;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
+
+
 
 @media screen and (max-width: 768px) {
     .popup__content {

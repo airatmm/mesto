@@ -21,26 +21,3 @@
         min-width: 100%;
     }
 }
-
-.popup__input-error {
-    font-style: normal;
-    font-size: 12px;
-    line-height: 15px;
-    color: rgba(255, 0, 0, 1);
-    opacity: 0;
-    transition: 0.3s;
-    margin-top: 5px;
-
-
-
-
-
-}
-
-.popup__input_type_error {
-    border-bottom-color: red;
-}
-
-.popup__input-error_active {
-    opacity: 1;
-}

@@ -4,14 +4,14 @@ const showError = (formElement, inputElement, errorMessage) => {
 
     inputElement.classList.add('popup__input_type_error');
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('popup__input-error_active');
+    errorElement.classList.add('popup__error_visible');
 };
 /*Функция скрытия ошибки*/
 const hideError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
     inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__input-error_active');
+    errorElement.classList.remove('popup__error_visible');
     errorElement.textContent = '';
 };
 
@@ -58,16 +58,20 @@ const hasInvalidInput = (inputList) => {
     });
 };
 
-/*Функция добваления "неактивного класса" к кнопке отпрfвить, если не все поля прошли валидацию*/
+/*Функция добваления "неактивного класса" к кнопке отправить, если не все поля прошли валидацию*/
 const toggleButtonState = (inputList, buttonElement) => {
     if (hasInvalidInput(inputList)) {
-        buttonElement.classList.add('button_inactive');
+        buttonElement.classList.add('popup__button_disabled');
     } else {
-        buttonElement.classList.remove('button_inactive');
+        buttonElement.classList.remove('popup__button_disabled');
     }
 };
 
-
-
-
-enableValidation();
+enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+});

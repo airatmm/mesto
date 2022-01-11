@@ -115,12 +115,33 @@ function appendCards(item) {
 //функция для открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    closeOverlayByClick(popup);
+    closeOverlayByEscape(popup);
 }
 
 //функция для закрытия попапов
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeOverlayByEscape());
 }
+
+//функция закрытия попапа по клику на оверлей
+function closeOverlayByClick(popup) {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target === evt.currentTarget) {
+            closePopup(popup)
+        };
+    });
+};
+
+//функция закрытия попапа клавишей Esc
+function closeOverlayByEscape(popup) {
+    document.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Escape') {
+            closePopup(popup);
+        };
+    });
+};
 
 //функция открытия попапа редактирования
 function openPopupEdit() {
@@ -167,6 +188,7 @@ function hanldeCardFormSubmit(event) { //добавление карточки �
 function closePopupPhoto() {
     closePopup(popupPhoto);
 }
+
 
 editButton.addEventListener('click', openPopupEdit); // открытие попапа редактирования по клику
 popupCloseEdit.addEventListener('click', closePopupEdit); // закрытие попапа редактирования по клику на крестик

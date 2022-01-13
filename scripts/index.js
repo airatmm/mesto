@@ -64,7 +64,7 @@ const closeButtonPhoto = popupPhoto.querySelector('.popup__close_button'); // к
 // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 initialCards.forEach(appendCards);
 
-// Функция создания карточки при загрузке страницы (возможно нужно назвать её что то вроде renderCreateCards)
+// Функция создания карточки при загрузке страницы
 function createCards(item) {
     const cardsItem = template.querySelector('.cards__item').cloneNode(true);
     const photo = cardsItem.querySelector('.cards__images'); // изображение/фото
@@ -115,18 +115,19 @@ function appendCards(item) {
 //функция для открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    closeOverlayByClick(popup);
-    closeOverlayByEscape(popup);
+    document.addEventListener('keydown', closeByEscape); // назначаем слушатель клавиши Esc в попапе
+    closeByClick(popup);
+
 }
 
 //функция для закрытия попапов
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeOverlayByEscape());
+    document.removeEventListener('keydown', closeByEscape); //удаляем слушатель клавиши Esc в попапе
 }
 
 //функция закрытия попапа по клику на оверлей
-function closeOverlayByClick(popup) {
+function closeByClick(popup) {
     popup.addEventListener('click', (evt) => {
         if (evt.target === evt.currentTarget) {
             closePopup(popup)
@@ -135,12 +136,12 @@ function closeOverlayByClick(popup) {
 };
 
 //функция закрытия попапа клавишей Esc
-function closeOverlayByEscape(popup) {
-    document.addEventListener('keydown', (evt) => {
-        if (evt.key === 'Escape') {
-            closePopup(popup);
-        };
-    });
+
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
 };
 
 //функция открытия попапа редактирования

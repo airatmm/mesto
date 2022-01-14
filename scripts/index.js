@@ -65,21 +65,18 @@ function createCards(item) {
     likeButton.addEventListener('click', likeCards); // лайк по клику
     deleteButton.addEventListener('click', deleteCards); // удаление по клику
 
-
+    // открываем фотографию, подтягиваем фотографию(урл), заголовок, добавляем класс popup__dark для затемнение оверлея
+    function openPhoto() {
+        openPopup(popupPhoto);
+        photoUrl.src = item.link;
+        photoUrl.alt = item.name;
+        photoTitle.textContent = item.name;
+    }
 
     photo.addEventListener('click', openPhoto); // открытие попапа фотографий по клику
 
     return cardsItem;
 }
-
-// открываем фотографию, подтягиваем фотографию(урл), заголовок, добавляем класс popup__dark для затемнение оверлея
-function openPhoto(item) {
-    openPopup(popupPhoto);
-    photoUrl.src = item.link;
-    photoUrl.alt = item.name;
-    photoTitle.textContent = item.name;
-}
-
 //функция закрытия попапа с фотографией
 function closePopupPhoto() {
     closePopup(popupPhoto);

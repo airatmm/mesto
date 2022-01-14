@@ -1,3 +1,13 @@
+const params = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+};
+
+
 /*Функция показа ошибки*/
 const showError = (formElement, inputElement, errorMessage, params) => { // принимает форму, инпут и сообщение об ошибке
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`); // переменная ошибки по селектору по $id интпута и с -error
@@ -64,23 +74,19 @@ const disableSubmitButton = (buttonElement, params) => {
     buttonElement.classList.add(params.inactiveButtonClass);
     buttonElement.disabled = true;
 }
+
+const enableSubmitButton = (buttonElement, params) => {
+    buttonElement.classList.remove(params.inactiveButtonClass);
+    buttonElement.disabled = false; // иначе убираем
+}
 //Функция дактивирует кнопку отправить, если не все поля прошли валидацию
 const toggleButtonState = (inputList, buttonElement, params) => {
-
     if (hasInvalidInput(inputList)) { // если есть невалидный интут
         disableSubmitButton(buttonElement, params);
         // то дективируем кнопку
     } else {
-        buttonElement.classList.remove(params.inactiveButtonClass);
-        buttonElement.disabled = false; // иначе убираем
+        enableSubmitButton(buttonElement, params);
     }
 };
 
-enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}); // вызываем функцию
+enableValidation(params); // вызываем функцию

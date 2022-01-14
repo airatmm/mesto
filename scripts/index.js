@@ -188,7 +188,7 @@ function hanldeCardFormSubmit(event) { //добавление карточки �
     );
     cardTitle.value = '';
     cardUrl.value = '';
-    disableSubmitButton(document.querySelector('.popup__button_card_save'), params);
+    disableSubmitButton(document.querySelector('.popup__button_card_save'), params.inactiveButtonClass);
     closePopupAdd();
 
 }

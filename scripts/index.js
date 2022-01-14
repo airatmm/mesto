@@ -106,17 +106,16 @@ function closePopup(popup) {
 //функция закрытия попапа клавишей Esc
 
 function closeByEscape(evt) {
-    const openedPopup = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
-        closePopup(openedPopup, evt);
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     }
 };
 
 //функция закрытия попапа по клику на оверлей (должен удалятся слушатель в функции закрытия попапов, если нет, то ниже есть ф-ии для каждого попапа отдельно)
 function closeByClick(evt) {
-    const openedPopup = document.querySelector('.popup_opened');
     if (evt.target === evt.currentTarget) {
-        closePopup(openedPopup, evt)
+        closePopup(evt.target)
     };
 };
 
@@ -179,7 +178,7 @@ function hanldeCardFormSubmit(event) { //добавление карточки �
     );
     cardTitle.value = '';
     cardUrl.value = '';
-    disableSubmitButton(buttonSaveEdit, params.inactiveButtonClass);
+    disableSubmitButton(buttonSaveEdit, params);
     closePopupAdd();
 }
 

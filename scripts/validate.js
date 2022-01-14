@@ -7,7 +7,6 @@ const params = {
     errorClass: 'popup__error_visible'
 };
 
-
 /*Функция показа ошибки*/
 const showError = (formElement, inputElement, errorMessage, params) => { // принимает форму, инпут и сообщение об ошибке
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`); // переменная ошибки по селектору по $id интпута и с -error

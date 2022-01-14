@@ -36,6 +36,8 @@ const template = document.querySelector('.template').content; // Берем вс
 const popupPhoto = document.querySelector('.popup_type_foto'); // попап фотографий 
 const closeButtonPhoto = popupPhoto.querySelector('.popup__close_button'); // кнопка закрытия попапа фотографий
 
+const buttonSaveEdit = document.querySelector('.popup__button_card_save');
+
 // Перебираем массив и при каждой итерации добавляем(рендерим) карточки
 initialCards.forEach(appendCards);
 
@@ -48,10 +50,7 @@ function createCards(item) {
     photo.alt = item.name;
 
     const likeButton = cardsItem.querySelector('.cards__like'); // кнопка лайка
-
     const deleteButton = cardsItem.querySelector('.cards__delete'); //кнопка удалить
-
-
 
     // функция лайка
     function likeCards(event) {
@@ -66,18 +65,21 @@ function createCards(item) {
     likeButton.addEventListener('click', likeCards); // лайк по клику
     deleteButton.addEventListener('click', deleteCards); // удаление по клику
 
-    // открываем фотографию, подтягиваем фотографию(урл), заголовок, добавляем класс popup__dark для затемнение оверлея
-    function openPhoto() {
-        openPopup(popupPhoto);
-        photoUrl.src = item.link;
-        photoUrl.alt = item.name;
-        photoTitle.textContent = item.name;
-    }
+
 
     photo.addEventListener('click', openPhoto); // открытие попапа фотографий по клику
 
     return cardsItem;
 }
+
+// открываем фотографию, подтягиваем фотографию(урл), заголовок, добавляем класс popup__dark для затемнение оверлея
+function openPhoto(item) {
+    openPopup(popupPhoto);
+    photoUrl.src = item.link;
+    photoUrl.alt = item.name;
+    photoTitle.textContent = item.name;
+}
+
 //функция закрытия попапа с фотографией
 function closePopupPhoto() {
     closePopup(popupPhoto);
@@ -163,21 +165,13 @@ popupPhoto.addEventListener('click', (evt) => {
     }
 });*/
 
-
-//функция закрытия попапа по клику на оверлей
-
-
-
 /////////////////////////////////
-
 
 /* Отправка формы редактирования профиля*/
 function submitEditForm(event) {
     event.preventDefault(); // для того что бы страница не перезагружалась
-
     titleProfile.textContent = titleField.value;
     discriptionText.textContent = discriptionField.value;
-
     closePopup(popupEdit);
 }
 
@@ -188,9 +182,8 @@ function hanldeCardFormSubmit(event) { //добавление карточки �
     );
     cardTitle.value = '';
     cardUrl.value = '';
-    disableSubmitButton(document.querySelector('.popup__button_card_save'), params.inactiveButtonClass);
+    disableSubmitButton(buttonSaveEdit, params.inactiveButtonClass);
     closePopupAdd();
-
 }
 
 editButton.addEventListener('click', openPopupEdit); // открытие попапа редактирования по клику

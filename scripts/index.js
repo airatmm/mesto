@@ -55,12 +55,12 @@ function createCards(item) {
     // функция лайка
     function likeCards(event) {
         event.target.classList.toggle('cards__like_active');
-    };
+    }
 
     // функция удаления карточки
     function deleteCards() {
         deleteButton.closest('.cards__item').remove(); // closest - возвращает ближайший родительский элемент с переданным селектором и remove срабатывает на весь элемент списка
-    };
+    }
 
     likeButton.addEventListener('click', likeCards); // лайк по клику
     deleteButton.addEventListener('click', deleteCards); // удаление по клику
@@ -110,14 +110,14 @@ function closeByEscape(evt) {
         const openedPopup = document.querySelector('.popup_opened');
         closePopup(openedPopup);
     }
-};
+}
 
 //функция закрытия попапа по клику на оверлей (должен удалятся слушатель в функции закрытия попапов, если нет, то ниже есть ф-ии для каждого попапа отдельно)
 function closeByClick(evt) {
     if (evt.target === evt.currentTarget) {
         closePopup(evt.target)
-    };
-};
+    }
+}
 
 //функция открытия попапа редактирования
 function openPopupEdit() {

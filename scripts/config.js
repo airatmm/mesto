@@ -1,5 +1,5 @@
 // массив карточек
-const initialCards = [
+export const initialCards = [
     {
         name: 'Retro Car',
         link: 'https://cdn.pixabay.com/photo/2015/05/28/23/12/auto-788747_960_720.jpg'
@@ -25,5 +25,3 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
-
-export { initialCards };

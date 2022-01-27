@@ -1,6 +1,5 @@
 import {popupPhoto, photoUrl, photoTitle, openPopup} from "./index.js";
 
-
 class Card {
 	constructor(name, link, alt, cardSelector) {
 		this._name = name;

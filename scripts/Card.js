@@ -19,8 +19,11 @@ class Card {
 
 // публичный метод renderCard - подготовит карточку к публикации
 	renderCard() {
+
 		// Запишем разметку в поле _element.
 		this._element = this._getTemplate();
+		this._likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по слелектору
+		this._cardImage = this._element.querySelector('.cards__images');
 		// Добавим данные
 		this._photo = this._element.querySelector('.cards__images');
 		this._photo.src = this._link; // изображение/фото
@@ -45,14 +48,14 @@ class Card {
 		// Находим селектор кнопки лайка
 		// Вешаем событие клика
 		// Возвращаем метод _likeCard(ниже)
-		this._element.querySelector('.cards__like').addEventListener('click', () => {
+		this._likeButton.addEventListener('click', () => {
 			this._likeCard();
 		})
 		// Открытие попапа карточки
 		// Находим селектор карточки
 		// Вешаем событие клика
 		// Возвращаем метод _openPhoto(ниже)
-		this._element.querySelector('.cards__images').addEventListener('click', () => {
+		this._cardImage.addEventListener('click', () => {
 			this._openPhoto();
 		})
 	}
@@ -64,8 +67,8 @@ class Card {
 
 // метод лайка карточки
 	_likeCard() {
-		const likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по слелектору
-		likeButton.classList.toggle('cards__like_active'); // при каждом нажатии меняется класс
+		//const likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по слелектору
+		this._likeButton.classList.toggle('cards__like_active'); // при каждом нажатии меняется класс
 	}
 
 // метод открыти попапа с карточкой

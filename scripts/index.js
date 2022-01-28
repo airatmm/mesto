@@ -1,4 +1,4 @@
-import {initialCards} from "./config.js";
+import {initialCards, params} from "./constants.js";
 import {Card} from "./Card.js";
 import {FormValidator} from "./FormValidator.js";
 
@@ -36,15 +36,7 @@ const cardsList = document.querySelector('.cards__list');
 // переменная для обработчика который объединяет закрытия по крестику и оверлею
 const popups = document.querySelectorAll('.popup')
 
-// возможно лучше вынести в config.js
-const params = {
-	formSelector: '.popup__form',
-	inputSelector: '.popup__input',
-	submitButtonSelector: '.popup__button',
-	inactiveButtonClass: 'popup__button_disabled',
-	inputErrorClass: 'popup__input_type_error',
-	errorClass: 'popup__error_visible'
-};
+
 
 // фунцкия создания карточки
 function createCard(item) {
@@ -52,7 +44,7 @@ function createCard(item) {
 	return card.renderCard();
 }
 
-// первичная загрузка карточек из config.js
+// первичная загрузка карточек из constants.js
 initialCards.forEach((item) => {
 	const cardsItem = createCard(item);
 	cardsList.append(cardsItem);

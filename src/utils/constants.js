@@ -26,12 +26,28 @@ export const initialCards = [
     }
 ];
 
-// возможно лучше вынести в constants.js
+
 export const params = {
+    cardListSelector: '.cards__list',
+    popupPhotoSelector: '.popup_type_foto',
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
+    errorClass: 'popup__error_visible',
+
 };
+
+export const profileName = document.querySelector('.profile__title'); // Находим блок с именем
+export const profileDescription = document.querySelector('.profile__description'); // Находим блок с описанием
+
+export const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
+export const editButton = document.querySelector('.profile__button_action_edit'); //(копка редактирования профиля)
+
+export const titleField = document.querySelector('.popup__input_type_title');
+export const descriptionField = document.querySelector('.popup__input_type_description')
+
+
+
+

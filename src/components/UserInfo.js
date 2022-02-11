@@ -7,7 +7,7 @@ export class UserInfo {
 		this._profileDescription = profileDescription;
 	}
 
-	// метод getUserInfo, который возвращает объект с данными пользователя
+	// метод getUserInfo, который возвращает(получает) объект с данными пользователя
 	getUserInfo() {
 		return {
 			name: this._profileName.textContent,
@@ -15,10 +15,9 @@ export class UserInfo {
 		}
 	}
 
-// метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
+// метод setUserInfo, который принимает !!новые данные пользователя и добавляет их на страницу.
 	setUserInfo({name, description}) {
 		this._profileName.textContent = name;
 		this._profileDescription.textContent = description;
 	}
 }
-

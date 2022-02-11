@@ -1,3 +1,4 @@
+// класс наследуется от Popup
 import {Popup} from './Popup.js';
 
 export class PopupWithForm extends Popup {
@@ -38,6 +39,6 @@ export class PopupWithForm extends Popup {
 	// Перезаписываем родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
 	close() {
 		super.close();
-		//this._popupForm.reset();
+		this._popupForm.reset();
 	}
 }

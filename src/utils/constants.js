@@ -48,6 +48,11 @@ export const editButton = document.querySelector('.profile__button_action_edit')
 export const titleField = document.querySelector('.popup__input_type_title');
 export const descriptionField = document.querySelector('.popup__input_type_description')
 
+const popupEdit = document.querySelector('.popup_type_edit'); //возвращаем попап редактирования профиля (popup_type_edit)
+const popupAddCard = document.querySelector('.popup_type_card');
+
+export const editProfileForm = popupEdit.querySelector('.popup__form');
+export const addProfileForm = popupAddCard.querySelector('.popup__form');
 
 
 

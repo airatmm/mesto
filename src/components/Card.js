@@ -23,7 +23,6 @@ class Card {
 	renderCard() {
 
 		// Добавим данные
-		//this._photo = this._element.querySelector('.cards__images');
 		this._cardImage.src = this._link; // изображение/фото
 		this._cardImage.alt = this._alt;
 		this._element.querySelector('.cards__caption').textContent = this._name;
@@ -43,19 +42,12 @@ class Card {
 			this._deleteCard();
 		})
 		// Лайк карточки
-		// Находим селектор кнопки лайка
-		// Вешаем событие клика
-		// Возвращаем метод _likeCard(ниже)
+
 		this._likeButton.addEventListener('click', () => {
 			this._likeCard();
 		})
 		// Открытие попапа карточки
-		// Находим селектор карточки
-		// Вешаем событие клика
-		// Возвращаем метод _openPhoto(ниже)
-		// this._cardImage.addEventListener('click', () => {
-		// 	this._openPhoto();
-		// })
+
 		this._cardImage.addEventListener('click', () => {
 			this._openPopupWithImage();
 		})
@@ -68,7 +60,6 @@ class Card {
 
 // метод лайка карточки
 	_likeCard() {
-		//const likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по слелектору
 		this._likeButton.classList.toggle('cards__like_active'); // при каждом нажатии меняется класс
 	}
 
@@ -78,15 +69,6 @@ class Card {
 			this._link,
 		)
 	}
-
-// метод открыти попапа с карточкой
-
-// 	_openPhoto() {
-// 		openPopup(popupPhoto); // функция открытия попапа с карточкой
-// 		photoUrl.src = this._link; // само фото
-// 		photoUrl.alt = this._name; // альт фотки
-// 		photoTitle.textContent = this._name; // заголовок
-// 	}
 }
 
 export {Card};

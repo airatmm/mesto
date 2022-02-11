@@ -56,7 +56,7 @@ export class FormValidator {
 		});
 	};
 
-	// Деактивации кнопки сохранить (публичный, используется еще и в index.js)
+	// Метод деактивации кнопки сохранить
 	disableSubmitButton() {
 		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 		this._buttonElement.disabled = true;
@@ -78,11 +78,20 @@ export class FormValidator {
 		}
 	}
 
-	//
+	// функция включения валидации, используем в index.js
 	enableValidation() {
 		this._formElement.addEventListener('submit', evt => {
 			evt.preventDefault();
 		});
 		this._setEventListeners();
+	}
+
+	// метод для очистки ошибок и управления кнопкой
+	// если пользователь начал что то вводить, а потом передумал и закрыл попап, при следующем открытии ошибки очищаются и кнопка неактивна
+	resetValidation() {
+		this._toggleButtonState();
+		this._inputList.forEach((inputElement) => {
+			this._hideError(inputElement);
+		});
 	}
 }

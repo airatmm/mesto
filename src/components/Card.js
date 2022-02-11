@@ -1,11 +1,13 @@
-import {popupPhoto, photoUrl, photoTitle, openPopup} from "./index.js";
-
 class Card {
-	constructor(name, link, alt, cardSelector) {
+	constructor(name, link, alt, cardSelector, {handleCardClick}) {
 		this._name = name;
 		this._link = link;
 		this._alt = alt;
 		this._cardSelector = cardSelector;
+		this._handleCardClick = handleCardClick;
+		this._element = this._getTemplate();// Запишем разметку в поле _element.
+		this._cardImage = this._element.querySelector('.cards__images'); // картинка по селектору
+		this._likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по селектору
 	}
 
 // метод _getTemplate - вернем разметку из template-элемента
@@ -20,14 +22,10 @@ class Card {
 // публичный метод renderCard - подготовит карточку к публикации
 	renderCard() {
 
-		// Запишем разметку в поле _element.
-		this._element = this._getTemplate();
-		this._likeButton = this._element.querySelector('.cards__like'); // кнопка лайка по слелектору
-		this._cardImage = this._element.querySelector('.cards__images');
 		// Добавим данные
-		this._photo = this._element.querySelector('.cards__images');
-		this._photo.src = this._link; // изображение/фото
-		this._photo.alt = this._alt;
+		//this._photo = this._element.querySelector('.cards__images');
+		this._cardImage.src = this._link; // изображение/фото
+		this._cardImage.alt = this._alt;
 		this._element.querySelector('.cards__caption').textContent = this._name;
 		this._setEventListeners(); // добавляем обработчик
 
@@ -55,8 +53,11 @@ class Card {
 		// Находим селектор карточки
 		// Вешаем событие клика
 		// Возвращаем метод _openPhoto(ниже)
+		// this._cardImage.addEventListener('click', () => {
+		// 	this._openPhoto();
+		// })
 		this._cardImage.addEventListener('click', () => {
-			this._openPhoto();
+			this._openPopupWithImage();
 		})
 	}
 
@@ -71,13 +72,21 @@ class Card {
 		this._likeButton.classList.toggle('cards__like_active'); // при каждом нажатии меняется класс
 	}
 
-// метод открыти попапа с карточкой
-	_openPhoto() {
-		openPopup(popupPhoto); // функция открытия попапа с карточкой
-		photoUrl.src = this._link; // само фото
-		photoUrl.alt = this._name; // альт фотки
-		photoTitle.textContent = this._name; // заголовок
+	_openPopupWithImage() {
+		this._handleCardClick(
+			this._name,
+			this._link,
+		)
 	}
+
+// метод открыти попапа с карточкой
+
+// 	_openPhoto() {
+// 		openPopup(popupPhoto); // функция открытия попапа с карточкой
+// 		photoUrl.src = this._link; // само фото
+// 		photoUrl.alt = this._name; // альт фотки
+// 		photoTitle.textContent = this._name; // заголовок
+// 	}
 }
 
 export {Card};

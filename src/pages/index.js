@@ -55,7 +55,7 @@ const cardsList = new Section({
 cardsList.renderItems(); // рендерим наши шесть карточек
 
 // новый экземпляр класса UserInfo. Профиль пользователя
-const UserProfile = new UserInfo({profileName, profileDescription});
+const userProfile = new UserInfo({profileName, profileDescription});
 // profileName - '.profile__title'
 // profileDescription - '.profile__description'
 
@@ -73,7 +73,7 @@ popupAddCardForm.setEventListeners();
 const popupProfileForm = new PopupWithForm({
 	popupSelector: '.popup_type_edit',
 	handleFormSubmit: (item) => {
-		UserProfile.setUserInfo(item); // метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
+		userProfile.setUserInfo(item); // метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
 		popupProfileForm.close();
 	}
 })
@@ -87,7 +87,7 @@ profileFormValidation.enableValidation();
 
 // открытие попапа редактирования профиля
 editButton.addEventListener('click', () => {
-	const profile = UserProfile.getUserInfo(); // метод getUserInfo, который возвращает(получает) объект с данными пользователя
+	const profile = userProfile.getUserInfo(); // метод getUserInfo, который возвращает(получает) объект с данными пользователя
 	titleField.value = profile.name;
 	descriptionField.value = profile.description;
 	profileFormValidation.resetValidation();

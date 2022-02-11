@@ -7,7 +7,7 @@ export class FormValidator {
 		this._inputErrorClass = params.inputErrorClass;
 		this._errorClass = params.errorClass;
 		this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-
+		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 	}
 
 // Метод показа ошибок
@@ -58,7 +58,6 @@ export class FormValidator {
 
 	// Метод деактивации кнопки сохранить
 	disableSubmitButton() {
-		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 		this._buttonElement.disabled = true;
 		this._buttonElement.classList.add(this._inactiveButtonClass);
 	}

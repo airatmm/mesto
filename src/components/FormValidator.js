@@ -2,7 +2,7 @@ export class FormValidator {
 	constructor(params, formElement) {
 		this._formElement = formElement;
 		this._inputSelector = params.inputSelector;
-		//this._submitButtonSelector = params.submitButtonSelector;
+		this._submitButtonSelector = params.submitButtonSelector;
 		this._inactiveButtonClass = params.inactiveButtonClass;
 		this._inputErrorClass = params.inputErrorClass;
 		this._errorClass = params.errorClass;
@@ -56,12 +56,12 @@ export class FormValidator {
 		});
 	};
 
-	/* Деактивации кнопки сохранить (публичный, используется еще и в index.js) / использовался. вроде как уже не нужен, сейчас есть resetValidation
+	// Метод деактивации кнопки сохранить
 	disableSubmitButton() {
 		this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
 		this._buttonElement.disabled = true;
 		this._buttonElement.classList.add(this._inactiveButtonClass);
-	}*/
+	}
 
 // активация кнопки сохранить при успешном прохождении валидации
 	_enableSubmitButton() {

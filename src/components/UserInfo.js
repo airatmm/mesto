@@ -21,3 +21,4 @@ export class UserInfo {
 		this._profileDescription.textContent = description;
 	}
 }
+

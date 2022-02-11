@@ -19,7 +19,7 @@ import {UserInfo} from '../components/UserInfo.js';
 
 
 /* для попапа редактирования профиля*/
-//const popupEdit = document.querySelector('.popup_type_edit'); //возвращаем попап редактирования профиля (popup_type_edit)
+const popupEdit = document.querySelector('.popup_type_edit'); //возвращаем попап редактирования профиля (popup_type_edit)
 // const editButton = document.querySelector('.profile__button_action_edit'); //возвращаем элемент profile__button_action_edit (копка редактирования профиля) из секции profile
 // const formEdit = document.querySelector('.popup__form_edit'); //возвращаем элемент popup__form_edit (форма попапа. имя / о себе) (div popup)
 //
@@ -30,7 +30,7 @@ import {UserInfo} from '../components/UserInfo.js';
 // const descriptionText = document.querySelector('.profile__description'); //возвращаем элемент profile__description из секции profile (описание профиля (о себе))
 //
 // /* для попапа добавления карточек*/
-// const popupAddCard = document.querySelector('.popup_type_card'); // попап добавления карточки
+const popupAddCard = document.querySelector('.popup_type_card'); // попап добавления карточки
 // const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
 //
 // const cardTitle = document.querySelector('.popup__input_card_name'); // инпут названия
@@ -43,8 +43,8 @@ import {UserInfo} from '../components/UserInfo.js';
 // export const photoTitle = popupPhoto.querySelector('.popup__photo-title'); // заголовок карточки при открытии изображения
 // // const closePhoto = document.querySelector('.popup__close_photo'); // закртытие попапа изображения/фото
 
-//const editProfileForm = popupEdit.querySelector('.popup__form');
-//const addProfileForm = popupAddCard.querySelector('.popup__form');
+const editProfileForm = popupEdit.querySelector('.popup__form');
+const addProfileForm = popupAddCard.querySelector('.popup__form');
 
 // // находим ul-ку
 // const cardsList = document.querySelector('.cards__list');
@@ -54,15 +54,17 @@ import {UserInfo} from '../components/UserInfo.js';
 
 
 ////////////////////////////////////////////
+const openImagePopup = new PopupWithImage(params.popupPhotoSelector);
+openImagePopup.setEventListeners(); // Передаём слушатели событий
+
 
 const createCard = (item) => {
-	const openImagePopup = new PopupWithImage(params.popupPhotoSelector);
+
 	// создание экземпляра класса Card
 	const card = new Card(item.name, item.link, item.alt, '.template',
 		{
 			handleCardClick: () => {  // Создаем объект с методом открытия и событиями
 				openImagePopup.open(item.name, item.link); // Передаем метод открытия popup
-				openImagePopup.setEventListeners(); // Передаём слушатели событий
 			}
 		});
 	return card.renderCard(); // метод renderCard - подготовит карточку к публикации (Card.js)
@@ -90,16 +92,6 @@ const UserProfile = new UserInfo({profileName, profileDescription});
 // 	profileDescription: '.profile__description'
 // });
 
-const popupProfileForm = new PopupWithForm({
-	popupSelector: '.popup_type_edit',
-	handleFormSubmit: (item) => {
-		UserProfile.setUserInfo(item);
-		console.log(item)
-	}
-})
-popupProfileForm.setEventListeners();
-
-
 const popupAddCardForm = new PopupWithForm({
 	popupSelector: '.popup_type_card',
 	handleFormSubmit: (item) => {
@@ -109,18 +101,36 @@ const popupAddCardForm = new PopupWithForm({
 })
 popupAddCardForm.setEventListeners();
 
+const popupProfileForm = new PopupWithForm({
+	popupSelector: '.popup_type_edit',
+	handleFormSubmit: (item) => {
+		UserProfile.setUserInfo(item);
+		console.log(item)
+	}
+})
+popupProfileForm.setEventListeners();
+
+const addCardFormValidation = new FormValidator(params, addProfileForm);
+const profileFormValidation = new FormValidator(params, editProfileForm);
+addCardFormValidation.enableValidation();
+profileFormValidation.enableValidation();
+
+// открытие попапа редактирования профиля
 editButton.addEventListener('click', () => {
 	const profile = UserProfile.getUserInfo();
 	titleField.value = profile.name;
 	descriptionField.value = profile.description;
 	UserProfile.getUserInfo();
+	profileFormValidation.resetValidation();
 	popupProfileForm.open();
-	//formProfileValidation.hideFormErrors();
 });
 
+// открытие попапа добавления карточки
 addCardButton.addEventListener('click', () => {
+	addCardFormValidation.resetValidation();
 	popupAddCardForm.open();
-	//formPlaceValidation.hideFormErrors();
+	addCardFormValidation.disableSubmitButton();
+
 })
 
 

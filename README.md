@@ -67,4 +67,6 @@
 
 1. Созданы классы Section, Popup, PopupWithImage, PopupWithForm, UserInfo
 2. Модифицирован класс Card
-3. Настроена сборка webpack-ом 
+3. Настроена сборка webpack-ом
+
+# UPD sprint #9

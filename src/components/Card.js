@@ -2,7 +2,7 @@ class Card {
 	constructor(name, link, alt, cardSelector, {handleCardClick}) {
 		this._name = name;
 		this._link = link;
-		this._alt = alt;
+		this._alt = name;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
 		this._element = this._getTemplate();// Запишем разметку в поле _element.

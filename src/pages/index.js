@@ -1,4 +1,4 @@
-import './index.css';
+//import './index.css';
 
 import {
 	initialCards,
@@ -20,6 +20,7 @@ import {Section} from '../components/Section.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
+import {Api} from '../components/Api.js';
 
 // новый экземпляр класса PopupWithImage
 const openImagePopup = new PopupWithImage(params.popupPhotoSelector);

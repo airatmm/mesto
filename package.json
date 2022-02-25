@@ -1,7 +1,7 @@
 {
   "name": "mesto",
   "version": "1.0.0",
-  "description": "![Обожка](https://user-images.githubusercontent.com/69466179/136699124-38c6d7db-75e2-4216-a87b-da5cfec75bd2.png)",
+  "description": "![Обложка](https://user-images.githubusercontent.com/69466179/136699124-38c6d7db-75e2-4216-a87b-da5cfec75bd2.png)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

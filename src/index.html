@@ -37,6 +37,7 @@
 <footer class="footer">
 	<p class="footer__copyright">&copy; 2021 Mesto Russia</p>
 </footer>
+<!-- Попап редактирования профиля -->
 <div class="popup popup_type_edit">
 	<div class="popup__content">
 		<button class="popup__close popup__close_edit" type="button"></button>
@@ -53,7 +54,7 @@
 		</form>
 	</div>
 </div>
-
+<!-- Попап добавления карточки -->
 <div class="popup popup_type_card">
 	<div class="popup__content">
 		<button class="popup__close popup__close_card" type="button"></button>
@@ -69,7 +70,7 @@
 		</form>
 	</div>
 </div>
-
+<!-- Попап открытия изображения карточки -->
 <div class="popup popup_type_foto">
 	<div class=popup__photo>
 		<button class="popup__close popup__close_button" type="button"></button>
@@ -78,13 +79,31 @@
 	</div>
 </div>
 
+<!-- Попап изменения аватара профиля -->
+<div class="popup popup_type_avatar">
+	<div class="popup__content">
+		<button class="popup__close popup__close_avatar" type="button"></button>
+		<h2 class="popup__title">Обновить аватар</h2>
+		<form class="popup__form popup__form_avatar" name="form" novalidate>
+			<input id="avatar" placeholder="Ссылка на картинку" type="url"
+				   class="popup__input popup__input_avatar" name="link" required>
+			<span class="popup__error avatar-error"></span>
+			<button type="submit" class="popup__button popup__button_avatar_save" name="save">Сохранить</button>
+		</form>
+	</div>
+</div>
+
+<!-- Шаблон карточек -->
 <template class="template">
 	<li class="cards__item">
 		<button type="button" class="cards__delete"></button>
 		<img class="cards__images" src="." alt="">
 		<div class="cards__content">
 			<h2 class="cards__caption"></h2>
-			<button type="button" class="cards__like"></button>
+			<div>
+				<button type="button" class="cards__like"></button>
+				<p class="cards__like-counter">0</p>
+			</div>
 		</div>
 	</li>
 </template>

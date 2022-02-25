@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    cursor: pointer;
 }
 
 .profile__avatar::after {
@@ -22,12 +23,8 @@
 }
 
 .profile__avatar:hover::after {
-    background-color: rgba(0, 0, 0, 0.8);
-    background-image: url(../../../images/pen.svg);
-    background-position: center;
+    background: rgba(0, 0, 0, 0.8) url(../../../images/pen.svg) center no-repeat;
 }
-
-*
 
 @media screen and (max-width: 768px) {
     .profile__avatar {

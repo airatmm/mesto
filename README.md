@@ -1,6 +1,6 @@
 # Проект: "Mesto" для Яндекс.Практикума #4 #5 #6
 
-![Обожка](https://user-images.githubusercontent.com/69466179/136699124-38c6d7db-75e2-4216-a87b-da5cfec75bd2.png)
+![Обложка](https://user-images.githubusercontent.com/69466179/136699124-38c6d7db-75e2-4216-a87b-da5cfec75bd2.png)
 
 ## Ссылка на проект
 

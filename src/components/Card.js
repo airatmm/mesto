@@ -1,8 +1,8 @@
 class Card {
-	constructor(name, link, alt, cardSelector, {handleCardClick}) {
-		this._name = name;
-		this._link = link;
-		this._alt = alt;
+	constructor(data, cardSelector, {handleCardClick}) {
+		this._name = data.name;
+		this._link = data.link;
+		//this._alt = data.name;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
 		this._element = this._getTemplate();// Запишем разметку в поле _element.
@@ -24,7 +24,7 @@ class Card {
 
 		// Добавим данные
 		this._cardImage.src = this._link; // изображение/фото
-		this._cardImage.alt = this._alt;
+		//this._cardImage.alt = this._alt;
 		this._element.querySelector('.cards__caption').textContent = this._name;
 		this._setEventListeners(); // добавляем обработчик
 

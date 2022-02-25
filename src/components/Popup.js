@@ -41,4 +41,12 @@ export class Popup {
 			this.close();
 		}
 	}
+
+	// isLoading(isLoading) {
+	// 	if(isLoading) {
+	// 		this._popupSaveButton.textContent = 'Сохранение...'
+	// 	} else {
+	// 		this._popupSaveButton.textContent = 'Сохранить'
+	// 	}
+	// }
 }

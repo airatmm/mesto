@@ -20,3 +20,5 @@ export class PopupWithAvatar extends Popup {
 		});
 	}
 }
+
+

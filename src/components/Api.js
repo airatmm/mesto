@@ -64,4 +64,33 @@ export class Api {
 		}).then(this._checkResponse)
 	}
 
+	getLikes() {
+		return fetch(`${this._address}/cards/likes`, {
+			method: 'GET',
+			headers: {
+				authorization: this._token,
+				'Content-Type': 'application/json'
+			}
+		}).then(this._checkResponse)
+	}
+
+	// addLike(id) {
+	// 	return fetch(`${this._address}/cards/likes/${id}`, {
+	// 		method: 'PUT',
+	// 		headers: {
+	// 			authorization: this._token,
+	// 			'Content-Type': 'application/json'
+	// 		}
+	// 	}).then(this._checkResponse())
+	// }
+	//
+	// removeLike(id) {
+	// 	return fetch(`${this._address}/likes/${id}`, {
+	// 		method: 'DELETE',
+	// 		headers: {
+	// 			authorization: this._token,
+	// 			'Content-Type': 'application/json'
+	// 		}
+	// 	}).then(this._checkResponse())
+	// }
 }

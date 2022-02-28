@@ -2,6 +2,8 @@ class Card {
 	constructor(data, cardSelector, {handleCardClick}) {
 		this._name = data.name;
 		this._link = data.link;
+		this._likes = data.likes;
+		this._id = data._id;
 		//this._alt = data.name;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
@@ -27,7 +29,7 @@ class Card {
 		//this._cardImage.alt = this._alt;
 		this._element.querySelector('.cards__caption').textContent = this._name;
 		this._setEventListeners(); // добавляем обработчик
-
+		this.setLikes();
 		// Вернём элемент наружу
 		return this._element;
 	}
@@ -69,6 +71,17 @@ class Card {
 			this._link,
 		)
 	}
+
+	setLikes() {
+		this._element.querySelector(
+			'.cards__like-counter'
+		).textContent = this._likes.length;
+	}
+
+	getId() {
+		return this._id;
+	}
+
 }
 
 export {Card};

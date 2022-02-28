@@ -16,12 +16,6 @@ export class Section {
 		});
 	}
 
-	// renderItems(data) {
-	// 	data.forEach((item) => {
-	// 		this._renderer(item);
-	// 	})
-	// }
-
 //Публичный метод addItem, который принимает DOM-элемент и добавляет его в контейнер / в конец.
 	addItem(element) {
 		this._container.append(element);

@@ -12,6 +12,7 @@ import {
     editButton,
     editProfileForm,
     addProfileForm,
+    editAvatarForm,
     popupAvatarButton
 } from "../utils/constants.js";
 
@@ -212,8 +213,10 @@ popupAvatarForm.setEventListeners();
 // валидация форм
 const addCardFormValidation = new FormValidator(params, addProfileForm);
 const profileFormValidation = new FormValidator(params, editProfileForm);
+const profileAvatarValidation = new FormValidator(params, editAvatarForm);
 addCardFormValidation.enableValidation();
 profileFormValidation.enableValidation();
+profileAvatarValidation.enableValidation();
 
 // открытие попапа редактирования автара
 // profileAvatar.addEventListener('click', () => {

@@ -41,7 +41,8 @@ export const params = {
 
 export const profileName = document.querySelector('.profile__title'); // Находим блок с именем
 export const profileDescription = document.querySelector('.profile__description'); // Находим блок с описанием
-export const profileAvatar = document.querySelector('.profile__avatar') // аватар профиля
+export const profileAvatar = document.querySelector('.profile__image') // аватар профиля
+export const popupAvatarButton = document.querySelector('.profile__avatar');
 
 export const addCardButton = document.querySelector('.profile__button_action_add'); //кнопка добавления карточки(+)
 export const editButton = document.querySelector('.profile__button_action_edit'); //(копка редактирования профиля)
@@ -55,7 +56,7 @@ const popupAddCard = document.querySelector('.popup_type_card');
 export const editProfileForm = popupEdit.querySelector('.popup__form');
 export const addProfileForm = popupAddCard.querySelector('.popup__form');
 
-export const popupAvatar = document.querySelector('.popup_type_avatar')
+
 
 
 

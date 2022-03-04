@@ -12,7 +12,7 @@ import {
     editButton,
     editProfileForm,
     addProfileForm,
-    popupAvatar
+    popupAvatarButton
 } from "../utils/constants.js";
 
 import {Card} from "../components/Card.js";
@@ -26,10 +26,14 @@ import {UserInfo} from '../components/UserInfo.js';
 import {Api} from '../components/Api.js';
 
 // профиль пользователя
-const userProfile = new UserInfo({profileName, profileDescription, profileAvatar});
+const userProfile = new UserInfo({
+    profileName,
+    profileDescription,
+    profileAvatar
+});
 // profileName - '.profile__title' - имя
 // profileDescription - '.profile__description' - о себе
-// profileAvatar = '.profile__avatar' - аватар
+// profileAvatar = '.profile__image' - аватар
 
 const api = new Api({
     address: 'https://mesto.nomoreparties.co/v1/cohort36',
@@ -42,10 +46,10 @@ let currentUserId;
 Promise.all([
     api.getCards(),
     api.getUser()
-]).then(([cards, userData]) => {
+]).then(([cards, profile]) => {
     cardsList.renderItems(cards); // Рендерим  карточки пользователей
-    userProfile.setUserInfo(userData); // грузим данные пользователя
-    currentUserId = userData._id;
+    userProfile.setUserInfo(profile); // грузим данные пользователя
+    currentUserId = profile._id;
 }).catch(err => {
     console.log(`Error: ${err}`);
 })
@@ -176,7 +180,7 @@ const popupProfileForm = new PopupWithForm({
                 popupProfileForm.close();
             })
             .catch(err => {
-                console.log(err)
+                console.log(`Ошибка профиля пользователя: ${err}`);
             })
         //console.log(item);
         //     .finally(() => {
@@ -186,25 +190,23 @@ const popupProfileForm = new PopupWithForm({
 });
 popupProfileForm.setEventListeners();
 //
-
-// const popupAvatarForm = new PopupWithForm({
-//     popupSelector: '.popup_type_avatar',
-//     handleFormSubmit: (item) => {
-//         //popupAvatarForm.renderLoading(true);
-//         api.changeUserAvatar({
-//             avatar: item.userAvatar,
-//         })
-//             .then((info) => {
-//                 user.setUserAvatar({
-//                     userAvatar: info.avatar,
-//                 });
-//                 popupAvatarForm.close();
-//             })
-//             .catch(err => console.log(`Ошибка при изменении аватара пользователя: ${err}`))
-//             .finally(() => popupAvatarForm.renderLoading(false));
-//     }
-// });
-// popupAvatarForm.setEventListeners();
+// попап аватара пользователя
+const popupAvatarForm = new PopupWithForm({
+    popupSelector: '.popup_type_avatar',
+    handleFormSubmit: (item) => {
+        //popupAvatarForm.renderLoading(true);
+        api.changeUserAvatar(item)
+            .then(result => {
+                userProfile.setUserInfo(result);
+                popupAvatarForm.close();
+            })
+            .catch(err => {
+                console.log(`Ошибка при изменении аватара пользователя: ${err}`)
+            })
+        //.finally(() => popupAvatarForm.renderLoading(false));
+    }
+});
+popupAvatarForm.setEventListeners();
 
 
 // валидация форм
@@ -233,7 +235,8 @@ addCardButton.addEventListener('click', () => {
     popupAddCardForm.open();
 })
 
-// popupAvatar.addEventListener('click', () => {
-//     popupAvatarForm.open();
-// });
+popupAvatarButton.addEventListener('click', () => {
+    popupAvatarForm.open();
+});
+console.log(popupAvatarButton)
 

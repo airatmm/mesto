@@ -96,19 +96,19 @@ export class Api {
 		}).then(this._checkResponse)
 	}
 
-	// changeUserAvatar({avatar}) {
-	// 	return fetch(`${this._address}/users/me/avatar`, {
-	// 		method: 'PATCH',
-	// 		headers: {
-	// 			authorization: this._token,
-	// 			'Content-Type': 'application/json'
-	// 		},
-	// 		body: JSON.stringify({
-	// 			avatar
-	// 		})
-	// 	})
-	// 		.then(this._checkResponse)
-	// }
+	changeUserAvatar(item) {
+		return fetch(`${this._address}/users/me/avatar`, {
+			method: 'PATCH',
+			headers: {
+				authorization: this._token,
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				avatar: item.avatar
+			})
+		})
+			.then(this._checkResponse)
+	}
 }
 
 

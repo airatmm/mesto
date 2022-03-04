@@ -7,7 +7,8 @@ export class PopupWithForm extends Popup {
 		super(popupSelector);
 		this._handleFormSubmit = handleFormSubmit;
 		this._popupForm = this._popup.querySelector('.popup__form');
-		this._inputList = this._popupForm.querySelectorAll('.popup__input'); // достаём все элементы полей
+		// достаём все элементы полей
+		this._inputList = this._popupForm.querySelectorAll('.popup__input');
 	}
 
 	// метод который собирает данные всех полей формы
@@ -22,7 +23,7 @@ export class PopupWithForm extends Popup {
 		return this._formValues;
 	}
 
-//В методе _setEventListeners при отправке формы вызовем _handleFormSubmit.
+//В методе setEventListeners при отправке формы вызовем _handleFormSubmit.
 // В качестве аргумента передадим ей объект, который возвращает функция _getInputValues
 	setEventListeners() {
 		super.setEventListeners();
@@ -35,7 +36,8 @@ export class PopupWithForm extends Popup {
 		});
 	}
 
-	// Перезаписываем родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
+	// Перезаписываем родительский метод close,
+	// так как при закрытии попапа форма должна ещё и сбрасываться.
 	close() {
 		super.close();
 		this._popupForm.reset();

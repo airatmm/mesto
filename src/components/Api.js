@@ -50,7 +50,7 @@ export class Api {
 	}
 
 	// добавление карточки
-	addNewCard(item) {
+	addNewCard(data) {
 		return fetch(`${this._address}/cards`, {
 			method: 'POST',
 			headers: {
@@ -58,8 +58,8 @@ export class Api {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				name: item.name,
-				link: item.link
+				name: data.name,
+				link: data.link
 			})
 		}).then(this._checkResponse)
 	}
@@ -75,16 +75,6 @@ export class Api {
 			}
 		}).then(this._checkResponse)
 	}
-
-	// addLikes() {
-	// 	return fetch(`${this._address}/cards/likes/${id}`, {
-	// 		method: 'PUT',
-	// 		headers: {
-	// 			authorization: this._token,
-	// 			'Content-Type': 'application/json'
-	// 		}
-	// 	}).then(this._checkResponse)
-	// }
 
 	addLike(id) {
 		return fetch(`${this._address}/cards/likes/${id}`, {

@@ -4,8 +4,8 @@
 export class Section {
 	constructor({renderer}, containerSelector) {
 		//this._items = items; //это массив данных, которые нужно добавить на страницу при инициализации класса
-		this._renderer = renderer; //это функция, которая отвечает за создание и отрисовку данных на странице
 		this._container = document.querySelector(containerSelector); //CSS-селектор контейнера. В него мы будем вставлять элементы разметки
+		this._renderer = renderer; //это функция, которая отвечает за создание и отрисовку данных на странице
 	}
 
 //Публичный метод, который отвечает за отрисовку всех элементов.

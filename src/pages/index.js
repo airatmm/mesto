@@ -68,7 +68,10 @@ Promise.all([
 //     })
 
 const createCard = (item) => {
-    const card = new Card(item, currentUserId, '.template',
+    const card = new Card(
+        item,
+        currentUserId,
+        '.template',
         {
             handleCardClick: () => {  // Создаем объект с методом открытия и событиями
                 openImagePopup.open(item.name, item.link); // Передаем метод открытия popup
@@ -86,24 +89,48 @@ const createCard = (item) => {
                         })
                 });
             },
-            handleAddLike: (card) => {
-                api.addLike(card.cardId())
-                    .then(() => {
-                        card.setLikesInfo();
-                    })
-                    .catch(err => {
-                        console.log(`Ошибка лайка: ${err}`)
-                    });
-            },
-            handleRemoveLike: (card) => {
-                api.removeLike(card.cardId())
-                    .then(() => {
-                        card.setLikesInfo();
-                    })
-                    .catch(err => {
-                        console.log(`Ошибка удаления лайка: ${err}`)
-                    });
+
+            handleLikeClick: (card) => {
+                if (card.ifLiked()) {
+                    api.removeLike(card.cardId())
+                        .then(() => {
+                            card.setLikesInfo();
+                        })
+                        .catch(err => {
+                            console.log(`Ошибка удаления лайка: ${err}`)
+                        });
+                } else {
+                    api.addLike(card.cardId())
+                        .then(() => {
+                            card.setLikesInfo();
+                        })
+                        .catch(err => {
+                            console.log(`Ошибка лайка: ${err}`)
+                        });
+                }
             }
+            // handleAddLike: (card) => {
+            //     api.addLike(card.cardId())
+            //         .then(() => {
+            //             card.setLikesInfo();
+            //         })
+            //         .catch(err => {
+            //             console.log(`Ошибка при установки лайка: ${err}`)
+            //         });
+            //     console.log(card.cardId());
+            //     console.log(currentUserId);
+            //     console.log(card._likes.length);
+            //     console.log(card._likes);
+            // },
+            // handleRemoveLike: (card) => {
+            //     api.removeLike(card.cardId())
+            //         .then(() => {
+            //             card.setLikesInfo();
+            //         })
+            //         .catch(err => {
+            //             console.log(`Ошибка удаления лайка: ${err}`)
+            //         });
+            // }
         });
     return card.renderCard()
 }
@@ -208,7 +235,5 @@ addCardButton.addEventListener('click', () => {
 
 // popupAvatar.addEventListener('click', () => {
 //     popupAvatarForm.open();
-//     // formAvatarValidation.activityStatusButton();
-//     // formAvatarValidation.hideFormErrors();
 // });
 

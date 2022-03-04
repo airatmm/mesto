@@ -158,6 +158,7 @@ openImagePopup.setEventListeners(); // Передаём слушатели со�
 const popupAddCardForm = new PopupWithForm({
     popupSelector: '.popup_type_card',
     handleFormSubmit: (item) => {
+        popupAddCardForm.isLoading(true);
         api.addNewCard(item)
             .then(result => {
                 cardsList.prependItem(createCard(result)); // добавляем в начало - метод prependItem в Section.js
@@ -165,7 +166,9 @@ const popupAddCardForm = new PopupWithForm({
             .catch(err => {
                 console.log(`Ошибка добавления карточки: ${err}`)
             })
-
+            .finally(() => {
+                popupAddCardForm.isLoading(false);
+            })
     }
 })
 popupAddCardForm.setEventListeners();
@@ -174,7 +177,7 @@ popupAddCardForm.setEventListeners();
 const popupProfileForm = new PopupWithForm({
     popupSelector: '.popup_type_edit',
     handleFormSubmit: (item) => {
-        //     popupProfileForm.isLoading(true);
+        popupProfileForm.isLoading(true);
         api.editProfile(item)
             .then(result => {
                 userProfile.setUserInfo(result);  // метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
@@ -183,10 +186,11 @@ const popupProfileForm = new PopupWithForm({
             .catch(err => {
                 console.log(`Ошибка профиля пользователя: ${err}`);
             })
-        //console.log(item);
-        //     .finally(() => {
-        //     popupProfileForm.isLoading(false);
-        // })
+
+            .finally(() => {
+                popupProfileForm.isLoading(false);
+            })
+        console.log(item);
     }
 });
 popupProfileForm.setEventListeners();
@@ -195,7 +199,7 @@ popupProfileForm.setEventListeners();
 const popupAvatarForm = new PopupWithForm({
     popupSelector: '.popup_type_avatar',
     handleFormSubmit: (item) => {
-        //popupAvatarForm.renderLoading(true);
+        popupAvatarForm.isLoading(true);
         api.changeUserAvatar(item)
             .then(result => {
                 userProfile.setUserInfo(result);
@@ -204,7 +208,9 @@ const popupAvatarForm = new PopupWithForm({
             .catch(err => {
                 console.log(`Ошибка при изменении аватара пользователя: ${err}`)
             })
-        //.finally(() => popupAvatarForm.renderLoading(false));
+            .finally(() => {
+                popupAvatarForm.isLoading(false);
+            })
     }
 });
 popupAvatarForm.setEventListeners();

@@ -96,6 +96,7 @@ class Card {
 	// метод удаления карточки
 	deleteCard() {
 		this._element.remove();
+		this._element = null;
 	}
 
 	// id карточки

@@ -1,7 +1,6 @@
 .cards__images {
     width: 100%;
     min-height: 282px;
-    /*Нельзя вроде как так делать, но в слаке сказали что только так и остается делать*/
     object-fit: cover;
     object-position: center;
     border-radius: 10px 10px 0 0;

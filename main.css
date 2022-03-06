@@ -17,7 +17,7 @@
 .cards{margin:0 auto 67px}@media screen and (max-width:1024px){.cards{margin:0 auto 48px;max-width:calc(100% - 38px)}}
 .cards__list{grid-column-gap:17px;grid-row-gap:20px;display:grid;grid-template-columns:repeat(3,minmax(282px,1fr));justify-content:center;margin:0;padding:0}@media (min-width:769px) and (max-width:1024px){.cards__list{grid-template-columns:repeat(2,282px)}}@media screen and (max-width:768px){.cards__list{grid-template-columns:repeat(1,282px)}}
 .cards__item{background-color:#fff;border-radius:10px;list-style:none;margin:0;padding:0;position:relative}
-.cards__images{border-radius:10px 10px 0 0;cursor:pointer;min-height:282px;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}
+.cards__images{border-radius:10px 10px 0 0;cursor:pointer;display:block;min-height:282px;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}
 .cards__content{align-items:center;display:flex;justify-content:space-between;margin:20px 21px 26px 20px}
 .cards__caption{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:calc(100% - 50px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cards__like{background-color:#fff;background:url(1ad06e85f169668a1f36.svg) 50% no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;transition:opacity .6s ease;width:22px}.cards__like:hover{opacity:.5}

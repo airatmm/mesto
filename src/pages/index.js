@@ -124,6 +124,7 @@ const popupAddCardForm = new PopupWithForm({
         api.addNewCard(item)
             .then(result => {
                 cardsList.prependItem(createCard(result)); // добавляем в начало - метод prependItem в Section.js
+                popupAddCardForm.close();
             })
             .catch(err => {
                 console.log(`Ошибка добавления карточки: ${err}`)

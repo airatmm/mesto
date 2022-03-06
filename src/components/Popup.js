@@ -5,6 +5,7 @@ export class Popup {
 		this.close = this.close.bind(this);
 		this._handleEscClose = this._handleEscClose.bind(this);
 		this._closeByClick = this._closeByClick.bind(this);
+		this._popupSaveButton = this._popup.querySelector('.popup__button');
 	}
 
 	// открытие popup
@@ -39,6 +40,17 @@ export class Popup {
 	_closeByClick(evt) {
 		if (evt.currentTarget === evt.target) {
 			this.close();
+		}
+	}
+
+	// метод загрузки  'Сохранение...'
+	isLoading(isLoading) {
+		if (isLoading) {
+			this._popupSaveButton.textContent = 'Сохранение...'
+		} else if (this._popupSelector === '.popup_type_card') {
+			this._popupSave.textContent = 'Создать'
+		} else {
+			this._popupSaveButton.textContent = 'Сохранить'
 		}
 	}
 }

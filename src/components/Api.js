@@ -85,7 +85,6 @@ export class Api {
 			}
 		}).then(this._checkResponse)
 	}
-
 	// удаление лайка
 	removeLike(id) {
 		return fetch(`${this._address}/cards/likes/${id}`, {

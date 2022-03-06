@@ -1,5 +1,6 @@
 import {Popup} from './Popup.js';
 
+// попап удаления карточки
 export class PopupWithConfirm extends Popup {
     constructor(popupSelector) {
         super(popupSelector);
@@ -9,7 +10,6 @@ export class PopupWithConfirm extends Popup {
     setEventListeners() {
         super.setEventListeners();
         this._button.addEventListener('click', () => {
-            //evt.preventDefault();
             this._handleSubmitCallback();
         });
     }

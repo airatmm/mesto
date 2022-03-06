@@ -3,7 +3,7 @@ export class Api {
 		this._address = address;
 		this._token = token;
 	}
-
+// Проверяем на ошибки
 	_checkResponse(res) {
 		if (res.ok) {
 			return res.json();
@@ -65,7 +65,6 @@ export class Api {
 	}
 
 	// удаление карточки
-
 	deleteCard(id) {
 		return fetch(`${this._address}/cards/${id}`, {
 			method: 'DELETE',
@@ -76,6 +75,7 @@ export class Api {
 		}).then(this._checkResponse)
 	}
 
+// добавление лайка
 	addLike(id) {
 		return fetch(`${this._address}/cards/likes/${id}`, {
 			method: 'PUT',
@@ -86,6 +86,7 @@ export class Api {
 		}).then(this._checkResponse)
 	}
 
+	// удаление лайка
 	removeLike(id) {
 		return fetch(`${this._address}/cards/likes/${id}`, {
 			method: 'DELETE',
@@ -96,6 +97,7 @@ export class Api {
 		}).then(this._checkResponse)
 	}
 
+	// поменять аватар
 	changeUserAvatar(item) {
 		return fetch(`${this._address}/users/me/avatar`, {
 			method: 'PATCH',

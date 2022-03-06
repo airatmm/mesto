@@ -8,12 +8,8 @@
     position: relative;
     min-width: 358px;
     padding: 0 0 13px;
-    margin-top: 30px;
+    margin-bottom: 30px;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
-}
-
-.popup__input:first-child {
-    margin: 0;
 }
 
 @media screen and (max-width: 1023px) {

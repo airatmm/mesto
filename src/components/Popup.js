@@ -43,6 +43,7 @@ export class Popup {
 		}
 	}
 
+	// метод загрузки  'Сохранение...'
 	isLoading(isLoading) {
 		if (isLoading) {
 			this._popupSaveButton.textContent = 'Сохранение...'

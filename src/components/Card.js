@@ -1,9 +1,13 @@
 class Card {
-	constructor(data, currentUserId, cardSelector, {
-		handleCardClick,
-		handleDeleteCardClick,
-		handleLikeClick
-	}) {
+	constructor
+	(data,
+	 currentUserId,
+	 cardSelector,
+	 {
+		 handleCardClick,
+		 handleDeleteCardClick,
+		 handleLikeClick
+	 }) {
 		this._name = data.name; // название/тайтл карточки
 		this._link = data.link; // сыылка на изображение
 		this._likes = data.likes ?? []; // лайки карточек, если их нет при загрузке применять правую часть, пустой массив
